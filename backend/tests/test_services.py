@@ -203,13 +203,25 @@ class TestMarketDemo:
         assert records[0]["source"].startswith("DEMONSTRATION DATA")
 
     @pytest.mark.asyncio
-    async def test_not_configured_raises_structured_error(self):
+    async def test_hardcoded_data_returns_records_without_key(self, monkeypatch):
+        # Default mode is "hardcoded": works with no live API key.
         import app.services.market_service as ms
 
-        # Make sure demo mode is off so the not-configured path is taken,
-        # regardless of other tests' temporary monkeypatching.
-        ms.settings.market_demo_mode = False
+        ms.settings.data_gov_in_api_key = ""
+        ms.settings.market_data_mode = "hardcoded"
+        records, source, is_demo = await ms.fetch_prices("Tomato", "Maharashtra", "Pune")
+        assert is_demo is False
+        assert source.startswith("data.gov.in / AGMARKNET (reference dataset)")
+        assert len(records) > 0
+        assert records[0]["commodity"] == "Tomato"
 
+    @pytest.mark.asyncio
+    async def test_api_mode_requires_key(self, monkeypatch):
+        # "api" mode must reject the request when no DATA_GOV_IN_API_KEY is set.
+        import app.services.market_service as ms
+
+        ms.settings.market_data_mode = "api"
+        ms.settings.data_gov_in_api_key = ""
         with pytest.raises(ms.MarketServiceError) as excinfo:
             await ms.fetch_prices("Tomato", "Maharashtra", "Pune")
         assert excinfo.value.error_code == "MARKET_NOT_CONFIGURED"

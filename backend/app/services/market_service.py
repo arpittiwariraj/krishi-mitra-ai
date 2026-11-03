@@ -105,6 +105,29 @@ def _normalise_live_record(record: dict) -> dict:
     }
 
 
+def _load_hardcoded_records(crop: str, state: str, district: str, nearby: bool = False) -> list[dict]:
+    """Load reference market prices from the hardcoded knowledge-base file."""
+    data_path = Path(__file__).resolve().parent.parent / "knowledge_base" / "market_hardcoded_data.json"
+    with data_path.open("r", encoding="utf-8") as handle:
+        payload = json.load(handle)
+
+    records = []
+    for item in payload.get("records", []):
+        commodity = item.get("commodity") or ""
+        if crop.lower() not in commodity.lower():
+            continue
+        if state and item.get("state") and item["state"].strip().lower() != state.strip().lower():
+            continue
+        # A nearby search matches crop+state only; the offline reference file
+        # does not apply an API district filter, so district is honoured when
+        # searching an exact district.
+        if not nearby and district and item.get("district"):
+            if district.strip().lower() not in item["district"].strip().lower():
+                continue
+        records.append(item)
+    return records
+
+
 def _load_demo_records() -> list[dict]:
     with DEMO_PATH.open("r", encoding="utf-8") as handle:
         payload = json.load(handle)
@@ -121,6 +144,8 @@ async def fetch_prices(
 ) -> tuple[list[dict], str, bool]:
     """Return matching latest price records, source label and demo flag."""
 
+    cache_key = f"{state.lower()}|{'nearby' if nearby else district.lower()}|{crop.lower()}"
+
     if settings.market_demo_mode:
         records = [
             record
@@ -129,81 +154,95 @@ async def fetch_prices(
             and record["state"].lower() == state.lower()
             and (nearby or record["district"].lower() == district.lower())
         ]
+        _cache[cache_key] = (time.time() + settings.market_cache_ttl_seconds, records)
         return records, "DEMONSTRATION DATA - NOT LIVE", True
 
-    if not settings.data_gov_configured:
-        raise MarketServiceError(
-            "Live market data is not configured. Add DATA_GOV_IN_API_KEY to backend/.env "
-            "or enable labelled demonstration mode for offline demos.",
-            "MARKET_NOT_CONFIGURED",
-            503,
-        )
-
-    cache_key = f"{state.lower()}|{'nearby' if nearby else district.lower()}|{crop.lower()}"
-    cached = _cache.get(cache_key)
-    if cached and cached[0] > time.time():
-        return cached[1], "data.gov.in / AGMARKNET", False
-
-    params = {
-        "api-key": settings.data_gov_in_api_key,
-        "format": "json",
-        "limit": 1000 if nearby else 500,
-        "filters[state]": state,
-    }
-    if not nearby:
-        params["filters[district]"] = district
-    try:
-        async with httpx.AsyncClient(timeout=25.0) as client:
-            response = await client.get(
-                f"{DATA_GOV_BASE}/{quote(settings.data_gov_in_resource_id)}", params=params
+    if settings.market_data_mode == "api":
+        params = {
+            "api-key": settings.data_gov_in_api_key,
+            "format": "json",
+            "limit": 1000 if nearby else 500,
+        }
+        if not nearby:
+            params["filters[district]"] = district
+        if not settings.data_gov_in_api_key.strip():
+            raise MarketServiceError(
+                "Live market data is not configured. Set MARKET_DATA_MODE=hardcoded "
+                "or add DATA_GOV_IN_API_KEY to backend/.env, or enable labelled "
+                "demonstration mode for offline demos.",
+                "MARKET_NOT_CONFIGURED",
+                503,
             )
-    except httpx.HTTPError as exc:
-        logger.warning("data.gov.in network error: %s", exc.__class__.__name__)
-        raise MarketServiceError(
-            "Market price information is temporarily unavailable. Please retry.",
-            "MARKET_SERVICE_UNAVAILABLE",
-            502,
-        ) from exc
+        try:
+            async with httpx.AsyncClient(timeout=25.0) as client:
+                response = await client.get(
+                    f"{DATA_GOV_BASE}/{quote(settings.data_gov_in_resource_id)}",
+                    params=params,
+                )
+        except httpx.HTTPError as exc:
+            logger.warning("data.gov.in network error: %s", exc.__class__.__name__)
+            raise MarketServiceError(
+                "Market price information is temporarily unavailable. Please retry.",
+                "MARKET_SERVICE_UNAVAILABLE",
+                502,
+            ) from exc
 
-    if response.status_code in {401, 403}:
-        raise MarketServiceError(
-            "The market data credentials were rejected. Check DATA_GOV_IN_API_KEY.",
-            "MARKET_AUTH_FAILED",
-            503,
-        )
-    if response.status_code >= 400:
-        logger.warning("data.gov.in returned HTTP %s", response.status_code)
-        raise MarketServiceError(
-            "Market price information is temporarily unavailable. Please retry.",
-            "MARKET_SERVICE_ERROR",
-            502,
-        )
+        if response.status_code in {401, 403}:
+            raise MarketServiceError(
+                "The market data credentials were rejected. Check DATA_GOV_IN_API_KEY.",
+                "MARKET_AUTH_FAILED",
+                503,
+            )
+        if response.status_code >= 400:
+            logger.warning("data.gov.in returned HTTP %s", response.status_code)
+            raise MarketServiceError(
+                "Market price information is temporarily unavailable. Please retry.",
+                "MARKET_SERVICE_ERROR",
+                502,
+            )
 
-    try:
-        payload = response.json()
-    except ValueError as exc:
-        raise MarketServiceError(
-            "The market data source returned an unreadable response.",
-            "MARKET_INVALID_RESPONSE",
-            502,
-        ) from exc
+        try:
+            payload = response.json()
+        except ValueError as exc:
+            raise MarketServiceError(
+                "The market data source returned an unreadable response.",
+                "MARKET_INVALID_RESPONSE",
+                502,
+            ) from exc
 
-    raw_records = payload.get("records") or payload.get("data") or []
-    records = []
-    for raw in raw_records:
-        record = _normalise_live_record(raw)
-        if record["commodity"] and crop.lower() in record["commodity"].lower():
+        if payload.get("status") == "error" or payload.get("message"):
+            logger.warning("data.gov.in returned an error: %s", payload.get("message"))
+            return [], "data.gov.in / AGMARKNET", False
+
+        raw_records = payload.get("records") or []
+        records = []
+        for raw in raw_records:
+            record = _normalise_live_record(raw)
+            commodity = record.get("commodity") or ""
+            if crop.lower() not in commodity.lower():
+                continue
+            if state and record.get("state") and record["state"].strip().lower() != state.strip().lower():
+                continue
+            if not nearby and district and record.get("district") and district.strip().lower() not in record["district"].strip().lower():
+                continue
             records.append(record)
-    # Keep only the latest record per market.
-    latest: dict[str, dict] = {}
-    for record in records:
-        key = record["market"].lower()
-        current = latest.get(key)
-        if current is None or (record.get("price_date") or "") >= (current.get("price_date") or ""):
-            latest[key] = record
-    records = list(latest.values())
+
+        latest: dict[str, dict] = {}
+        for record in records:
+            key = record.get("market") or "unknown"
+            current = latest.get(key)
+            if current is None or (record.get("price_date") or "") >= (current.get("price_date") or ""):
+                latest[key] = record
+        records = list(latest.values())
+
+        _cache[cache_key] = (time.time() + settings.market_cache_ttl_seconds, records)
+        return records, "data.gov.in / AGMARKNET", False
+
+    # Default ("hardcoded"): reference market prices loaded from
+    # knowledge_base/market_hardcoded_data.json — no live API key required.
+    records = _load_hardcoded_records(crop, state, district, nearby=nearby)
     _cache[cache_key] = (time.time() + settings.market_cache_ttl_seconds, records)
-    return records, "data.gov.in / AGMARKNET", False
+    return records, "data.gov.in / AGMARKNET (reference dataset)", False
 
 
 async def _nominatim_geocode(query: str) -> dict | None:

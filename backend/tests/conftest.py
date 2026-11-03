@@ -33,6 +33,9 @@ os.environ.setdefault("OPENROUTER_BASE_URL", "https://openrouter.ai/api/v1")
 os.environ.setdefault("OPENROUTER_MODEL", "openai/gpt-4o-mini")
 os.environ.setdefault("OPENROUTER_HTTP_REFERER", "https://krishimitra.example")
 os.environ.setdefault("OPENROUTER_TITLE", "Krishi Mitra AI")
+# Gemini is also forced to an empty key so its configured flag stays False
+# during tests (just like the other AI backends).
+os.environ.setdefault("GEMINI_API_KEY", "")
 # Explicitly disable demo mode so the test DB behaves deterministically even
 # if the project-local .env enables it.
 os.environ["MARKET_DEMO_MODE"] = "false"

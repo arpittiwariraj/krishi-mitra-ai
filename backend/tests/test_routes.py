@@ -131,12 +131,14 @@ class TestSchemes:
 
 
 class TestMarketDemo:
-    def _enable_demo_mode(self):
+    def _enable_demo_mode(self, monkeypatch):
         # Shared test DB is driven by the lru_cached Settings singleton.
-        settings.market_demo_mode = True
+        # Use monkeypatch (auto-restores) so this test class cannot leak
+        # market_demo_mode=True into later tests.
+        monkeypatch.setattr(settings, "market_demo_mode", True)
 
-    def test_demo_prices(self, client):
-        self._enable_demo_mode()
+    def test_demo_prices(self, client, monkeypatch):
+        self._enable_demo_mode(monkeypatch)
         resp = client.get("/api/market/prices?crop=Tomato&state=Maharashtra&district=Pune")
         assert resp.status_code == 200
         body = resp.json()["data"]
@@ -144,8 +146,8 @@ class TestMarketDemo:
         assert body["data_source"].startswith("DEMONSTRATION DATA")
         assert len(body["records"]) > 0
 
-    def test_demo_compare(self, client):
-        self._enable_demo_mode()
+    def test_demo_compare(self, client, monkeypatch):
+        self._enable_demo_mode(monkeypatch)
         resp = client.post(
             "/api/market/compare",
             json={

@@ -35,10 +35,23 @@ class Settings(BaseSettings):
     openrouter_http_referer: str = "https://krishimitra.example"
     openrouter_title: str = "Krishi Mitra AI"
 
+    # Gemini (Google AI) — alternative AI backend for Hindi voice and text
+    # advisory. When a Gemini API key is supplied it is preferred over the
+    # older direct OpenAI client.
+    gemini_api_key: str = ""
+    gemini_model: str = "gemini-2.0-flash"
+    gemini_http_referer: str = "https://krishimitra.example"
+    gemini_title: str = "Krishi Mitra AI"
+
     openweather_api_key: str = ""
 
     data_gov_in_api_key: str = ""
     data_gov_in_resource_id: str = "9ef84268-d588-465a-a308-a864a43d0070"
+    # How the market-price service obtains mandi data. "hardcoded" (default) uses
+    # the reference data in knowledge_base/market_hardcoded_data.json so the app
+    # works with no live API key; "api" calls data.gov.in / AGMARKNET (needs
+    # DATA_GOV_IN_API_KEY); "demo" returns the labelled demonstration file.
+    market_data_mode: str = "hardcoded"
     market_demo_mode: bool = False
     default_transport_cost_per_km: float = 0.0
 
@@ -67,6 +80,10 @@ class Settings(BaseSettings):
     @property
     def openweather_configured(self) -> bool:
         return bool(self.openweather_api_key.strip())
+
+    @property
+    def gemini_configured(self) -> bool:
+        return bool(self.gemini_api_key.strip())
 
     @property
     def data_gov_configured(self) -> bool:

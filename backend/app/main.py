@@ -15,7 +15,7 @@ from slowapi import _rate_limit_exceeded_handler
 from app.config import settings
 from app.database import check_database_connection, create_tables
 from app.ratelimit import limiter
-from app.routes import auth, disease, farmer, market, schemes, weather
+from app.routes import auth, disease, farmer, market, schemes, voice, weather
 from app.utils.responses import error, success
 
 logging.basicConfig(
@@ -122,11 +122,32 @@ def health():
             "database": {"connected": db_ok, "status": db_status},
             "services": {
                 "ai": {
-                    "configured": settings.openai_configured or settings.openrouter_configured,
-                    "method": "OpenRouter" if settings.openrouter_configured else ("OpenAI" if settings.openai_configured else "not configured"),
-                    "model": settings.openrouter_model if settings.openrouter_configured else (settings.openai_model if settings.openai_configured else None),
+                    "configured": (
+                        settings.openai_configured
+                        or settings.openrouter_configured
+                        or settings.gemini_configured
+                    ),
+                    "method": (
+                        "Gemini"
+                        if settings.gemini_configured
+                        else (
+                            "OpenRouter"
+                            if settings.openrouter_configured
+                            else ("OpenAI" if settings.openai_configured else "not configured")
+                        )
+                    ),
+                    "model": (
+                        settings.gemini_model
+                        if settings.gemini_configured
+                        else (
+                            settings.openrouter_model
+                            if settings.openrouter_configured
+                            else (settings.openai_model if settings.openai_configured else None)
+                        )
+                    ),
                     "openai_api_key_configured": settings.openai_configured,
                     "openrouter_configured": settings.openrouter_configured,
+                    "gemini_configured": settings.gemini_configured,
                 },
                 "openweather": {"configured": settings.openweather_configured},
                 "market": {
@@ -146,3 +167,4 @@ app.include_router(weather.router, prefix=settings.api_prefix)
 app.include_router(market.router, prefix=settings.api_prefix)
 app.include_router(schemes.router, prefix=settings.api_prefix)
 app.include_router(farmer.router, prefix=settings.api_prefix)
+app.include_router(voice.router, prefix=settings.api_prefix)
