@@ -1,0 +1,82 @@
+# Docker Compose — local development environment for Krishi Mitra AI.
+#
+# Services:
+#   db       PostgreSQL (named volume for persistence)
+#   backend  FastAPI API (reads .env; live-reloads on code changes)
+#   frontend React + Vite dev server (hot reload)
+#
+# Run:  docker compose up --build
+#
+# The backend reads .env (or the environment defaults in this file). When
+# MARKET_DEMO_MODE=true, market prices are explicitly-labelled demonstration data.
+
+name: krishi-mitra-ai
+
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${DB_USER:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
+      POSTGRES_DB: ${DB_NAME:-krishi_mitra}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-postgres} -d ${DB_NAME:-krishi_mitra}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: backend
+    image: krishi-mitra-backend
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: ${DATABASE_URL:-postgresql+psycopg://postgres:postgres@db:5432/krishi_mitra}
+      JWT_SECRET_KEY: ${JWT_SECRET_KEY:-development-only-change-me}
+      JWT_ALGORITHM: ${JWT_ALGORITHM:-HS256}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_MODEL: ${OPENAI_MODEL:-gpt-4o-mini}
+      OPENWEATHER_API_KEY: ${OPENWEATHER_API_KEY:-}
+      DATA_GOV_IN_API_KEY: ${DATA_GOV_IN_API_KEY:-}
+      DATA_GOV_IN_RESOURCE_ID: ${DATA_GOV_IN_RESOURCE_ID:-9ef84268-d588-465a-a308-a864a43d0070}
+      MARKET_DEMO_MODE: ${MARKET_DEMO_MODE:-false}
+      DEFAULT_TRANSPORT_COST_PER_KM: ${DEFAULT_TRANSPORT_COST_PER_KM:-0}
+      FRONTEND_URL: ${FRONTEND_URL:-http://localhost:5173}
+      API_PORT: ${API_PORT:-8000}
+      Uvicorn_RELOAD: ${Uvicorn_RELOAD:-1}
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      # Mount the source tree for live reload. Keep this when working on code;
+      # remove it for fully-builder image runs.
+      - .:/app
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: frontend
+    image: krishi-mitra-frontend
+    environment:
+      - VITE_API_BASE_URL=/api
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/app/frontend
+      - frontend-node_modules:/app/frontend/node_modules
+
+volumes:
+  pgdata:
+  frontend-node_modules:
