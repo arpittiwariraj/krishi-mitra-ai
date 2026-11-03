@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-soil-50 text-leaf-950 antialiased;
+    font-feature-settings: "ss01" on, "cv11" on;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply tracking-tight;
+  }
+
+  ::selection {
+    @apply bg-leaf-200 text-leaf-950;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-leaf-500 ring-offset-2 ring-offset-soil-50;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition duration-200 disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .btn-primary {
+    @apply btn bg-leaf-800 text-white shadow-sm hover:bg-leaf-900 active:scale-[0.99];
+  }
+
+  .btn-secondary {
+    @apply btn border border-leaf-200 bg-white text-leaf-900 hover:border-leaf-400 hover:bg-leaf-50;
+  }
+
+  .btn-ghost {
+    @apply btn text-leaf-800 hover:bg-leaf-50;
+  }
+
+  .btn-danger {
+    @apply btn border border-red-200 bg-red-50 text-red-700 hover:bg-red-100;
+  }
+
+  .card {
+    @apply rounded-2xl border border-leaf-100 bg-white p-5 shadow-sm;
+  }
+
+  .card-hover {
+    @apply card transition duration-200 hover:-translate-y-0.5 hover:border-leaf-200 hover:shadow-soft;
+  }
+
+  .label {
+    @apply mb-1.5 block text-sm font-semibold text-leaf-900;
+  }
+
+  .input {
+    @apply w-full rounded-xl border border-leaf-200 bg-white px-3.5 py-2.5 text-sm text-leaf-950 placeholder:text-leaf-400 focus:border-leaf-500 focus:outline-none focus:ring-2 focus:ring-leaf-200;
+  }
+
+  .select {
+    @apply input appearance-none bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2020%2020%22%20fill%3D%22%23166534%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M5.23%207.21a.75.75%200%20011.06.02L10%2011.17l3.71-3.94a.75.75%200%20111.08%201.04l-4.25%204.5a.75.75%200%2001-1.08%200l-4.25-4.5a.75.75%200%2001.02-1.06z%22%20clip-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E')] bg-[length:1.1rem] bg-[right_0.8rem_center] bg-no-repeat pr-10;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold;
+  }
+
+  .badge-leaf,
+  .badge-green {
+    @apply badge bg-leaf-100 text-leaf-800;
+  }
+
+  .badge-amber {
+    @apply badge bg-amber-100 text-amber-800;
+  }
+
+  .badge-red {
+    @apply badge bg-red-100 text-red-700;
+  }
+
+  .badge-blue {
+    @apply badge bg-sky-100 text-sky-700;
+  }
+
+  .section-eyebrow {
+    @apply text-xs font-bold uppercase tracking-[0.18em] text-leaf-600;
+  }
+
+  .section-title {
+    @apply font-display text-3xl font-semibold text-leaf-950 sm:text-4xl;
+  }
+
+  .section-copy {
+    @apply mt-3 max-w-2xl text-base leading-relaxed text-leaf-700;
+  }
+
+  .stat-card {
+    @apply rounded-2xl border border-leaf-100 bg-white p-4;
+  }
+
+  .link {
+    @apply font-semibold text-leaf-700 underline decoration-leaf-300 decoration-2 underline-offset-4 hover:text-leaf-900;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .hero-grid {
+    background-image:
+      linear-gradient(to right, rgba(20, 83, 45, 0.045) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(20, 83, 45, 0.045) 1px, transparent 1px);
+    background-size: 38px 38px;
+  }
+}
+
+.leaflet-container {
+  font-family: inherit;
+  border-radius: 1rem;
+  z-index: 0;
+}

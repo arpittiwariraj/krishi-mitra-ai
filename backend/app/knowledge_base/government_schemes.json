@@ -1,0 +1,390 @@
+{
+  "metadata": {
+    "description": "Curated central government agricultural schemes. Always confirm current eligibility and deadlines on the official portal linked in each record.",
+    "last_curated": "2025-06-30",
+    "important_note": "Listing here does not mean a farmer is approved or guaranteed eligible. Final eligibility is decided by the implementing department."
+  },
+  "schemes": [
+    {
+      "id": "pm-kisan",
+      "name": "Pradhan Mantri Kisan Samman Nidhi (PM-KISAN)",
+      "name_hi": "प्रधानमंत्री किसान सम्मान निधि (पीएम-किसान)",
+      "description": "Direct income support to eligible landholding farmer families, paid in instalments through direct benefit transfer.",
+      "description_hi": "पात्र भूमिधारक किसान परिवारों को सीधे बैंक खाते में किस्तों में आय सहायता।",
+      "department": "Ministry of Agriculture and Farmers Welfare, Government of India",
+      "state_applicability": ["All India"],
+      "farmer_categories": ["all"],
+      "landholding_min_ha": 0,
+      "landholding_max_ha": null,
+      "crops": ["All"],
+      "eligibility": [
+        "Landholding farmer family with cultivable land in the farmer's name as per land records",
+        "Valid Aadhaar and an active bank account linked with Aadhaar",
+        "Certain categories such as institutional landholders, income-tax payers and government employees are excluded under the scheme rules"
+      ],
+      "benefits": [
+        "Income support of ₹6,000 per year, normally paid in three equal instalments",
+        "Direct benefit transfer to the eligible farmer's bank account"
+      ],
+      "required_documents": [
+        "Aadhaar card",
+        "Land ownership records",
+        "Bank account details",
+        "Mobile number"
+      ],
+      "application_procedure": [
+        "Open the official PM-KISAN portal and choose the new farmer registration option",
+        "Complete Aadhaar or land-record based verification as prompted",
+        "Submit land and bank details and track the application status on the portal",
+        "Use the official help desk or Common Service Centre if assistance is needed"
+      ],
+      "official_application_url": "https://pmkisan.gov.in/",
+      "source_url": "https://pmkisan.gov.in/",
+      "last_verified_date": "2025-06-30"
+    },
+    {
+      "id": "pmfby",
+      "name": "Pradhan Mantri Fasal Bima Yojana (PMFBY)",
+      "name_hi": "प्रधानमंत्री फसल बीमा योजना (पीएमएफबीवाई)",
+      "description": "Crop insurance scheme that provides financial support when notified crops are damaged by covered natural risks.",
+      "description_hi": "अधिसूचित फसलों को प्राकृतिक जोखिमों से नुकसान होने पर वित्तीय सहायता देने वाली फसल बीमा योजना।",
+      "department": "Ministry of Agriculture and Farmers Welfare, Government of India",
+      "state_applicability": ["All India"],
+      "farmer_categories": ["all"],
+      "landholding_min_ha": 0,
+      "landholding_max_ha": null,
+      "crops": ["Wheat", "Rice", "Maize", "Cotton", "Soybean", "Mustard", "Groundnut", "Sugarcane", "Tomato", "Onion", "Potato"],
+      "eligibility": [
+        "Farmers growing a crop notified for insurance in their area during the relevant season",
+        "Both loanee and non-loanee farmers can apply, subject to scheme rules",
+        "Enrolment must be completed within the notified cut-off date for the season"
+      ],
+      "benefits": [
+        "Insurance cover for notified crop losses from covered natural risks",
+        "Farmer premium share is subsidised by the government as per the scheme",
+        "Claims are assessed through the scheme's crop-loss assessment process"
+      ],
+      "required_documents": [
+        "Aadhaar card",
+        "Bank account details",
+        "Land records or tenancy proof",
+        "Sowing certificate or crop declaration as required",
+        "Previous crop insurance details where applicable"
+      ],
+      "application_procedure": [
+        "Check whether your crop and area are notified for the current season",
+        "Apply through the official PMFBY portal, your bank, insurance intermediary or a Common Service Centre",
+        "Pay the applicable farmer premium and keep the receipt",
+        "Retain the application acknowledgement for claim follow-up"
+      ],
+      "official_application_url": "https://pmfby.gov.in/",
+      "source_url": "https://pmfby.gov.in/",
+      "last_verified_date": "2025-06-30"
+    },
+    {
+      "id": "kisan-credit-card",
+      "name": "Kisan Credit Card (KCC)",
+      "name_hi": "किसान क्रेडिट कार्ड (केसीसी)",
+      "description": "Short-term credit facility for crop production and related needs, offered through banks with interest subvention where applicable.",
+      "description_hi": "फसल उत्पादन और संबंधित जरूरतों के लिए बैंकों के माध्यम से अल्पकालिक ऋण सुविधा, जहां लागू हो वहां ब्याज सहायता के साथ।",
+      "department": "Department of Financial Services and partner banks; NABARD guidance",
+      "state_applicability": ["All India"],
+      "farmer_categories": ["all"],
+      "landholding_min_ha": 0,
+      "landholding_max_ha": null,
+      "crops": ["All"],
+      "eligibility": [
+        "Farmers with cultivable land, including owner-cultivators",
+        "Tenant farmers, oral lessees and sharecroppers subject to bank and state rules",
+        "Self-help groups and joint liability groups may be covered as per bank policy"
+      ],
+      "benefits": [
+        "Working capital for crop production and allied activities",
+        "Concessional interest and prompt-repayment incentive as per applicable government and RBI policy",
+        "Credit limit is assessed by the lending bank"
+      ],
+      "required_documents": [
+        "Identity proof (Aadhaar or other accepted ID)",
+        "Address proof",
+        "Land ownership or tenancy documents",
+        "Passport-size photograph",
+        "Crop plan and bank account details"
+      ],
+      "application_procedure": [
+        "Visit your bank branch or use the bank's KCC application channel",
+        "Complete the KCC application and submit land and identity documents",
+        "The bank assesses the credit limit and eligibility",
+        "Use the sanctioned credit only for the permitted agricultural purposes"
+      ],
+      "official_application_url": "https://www.myscheme.gov.in/schemes/kcc",
+      "source_url": "https://www.nabard.org/",
+      "last_verified_date": "2025-06-30"
+    },
+    {
+      "id": "soil-health-card",
+      "name": "Soil Health Card Scheme",
+      "name_hi": "मृदा स्वास्थ्य कार्ड योजना",
+      "description": "Provides soil testing and a soil health card with nutrient status and crop-wise fertiliser recommendations.",
+      "description_hi": "मिट्टी परीक्षण और पोषक तत्वों की स्थिति तथा फसल-वार उर्वरक सिफारिशों वाला मृदा स्वास्थ्य कार्ड।",
+      "department": "Department of Agriculture and Farmers Welfare, Government of India",
+      "state_applicability": ["All India"],
+      "farmer_categories": ["all"],
+      "landholding_min_ha": 0,
+      "landholding_max_ha": null,
+      "crops": ["All"],
+      "eligibility": [
+        "All farmers with cultivable land can request soil testing through the state agriculture department",
+        "Sampling cycles and local procedures are managed by the state government"
+      ],
+      "benefits": [
+        "Soil test results for key parameters",
+        "Crop-wise nutrient and fertiliser recommendations",
+        "Helps avoid unnecessary fertiliser expenditure"
+      ],
+      "required_documents": [
+        "Farmer identity details",
+        "Land survey or plot details",
+        "Contact information"
+      ],
+      "application_procedure": [
+        "Contact the local Krishi Vigyan Kendra, agriculture office or soil testing laboratory",
+        "Collect soil samples as instructed by the local agriculture department",
+        "Submit the sample with plot details and contact information",
+        "Use the soil health card recommendations with expert guidance"
+      ],
+      "official_application_url": "https://soilhealth.dac.gov.in/",
+      "source_url": "https://soilhealth.dac.gov.in/",
+      "last_verified_date": "2025-06-30"
+    },
+    {
+      "id": "e-nam",
+      "name": "National Agriculture Market (e-NAM)",
+      "name_hi": "राष्ट्रीय कृषि बाजार (ई-नाम)",
+      "description": "Online platform connecting farmers and traders to participating mandis for transparent agricultural trade.",
+      "description_hi": "किसानों और व्यापारियों को भाग लेने वाली मंडियों से जोड़ने वाला पारदर्शी ऑनलाइन कृषि व्यापार मंच।",
+      "department": "Ministry of Agriculture and Farmers Welfare, Government of India",
+      "state_applicability": ["All India"],
+      "farmer_categories": ["all"],
+      "landholding_min_ha": 0,
+      "landholding_max_ha": null,
+      "crops": ["All"],
+      "eligibility": [
+        "Farmers trading in an e-NAM-enabled mandi",
+        "Registration and onboarding are completed through the participating mandi or platform",
+        "FPOs and farmer groups may also participate subject to platform rules"
+      ],
+      "benefits": [
+        "Access to participating mandis and online price discovery",
+        "Transparent lot-based trading records",
+        "Potential access to a wider buyer network where available"
+      ],
+      "required_documents": [
+        "Aadhaar or accepted identity proof",
+        "Bank account details",
+        "Mobile number",
+        "Mandi-specific registration details"
+      ],
+      "application_procedure": [
+        "Check whether your local mandi is integrated with e-NAM",
+        "Register as a farmer through the e-NAM portal, mobile app or mandi help desk",
+        "Complete verification with the local mandi",
+        "Bring produce to the mandi and follow local e-NAM lot and payment procedures"
+      ],
+      "official_application_url": "https://www.enam.gov.in/",
+      "source_url": "https://www.enam.gov.in/",
+      "last_verified_date": "2025-06-30"
+    },
+    {
+      "id": "pm-kusum",
+      "name": "PM-KUSUM Scheme",
+      "name_hi": "पीएम-कुसुम योजना",
+      "description": "Promotes solar pumps and solar power for agriculture, reducing dependence on diesel and grid power.",
+      "description_hi": "कृषि के लिए सोलर पंप और सोलर ऊर्जा को बढ़ावा देती योजना, जिससे डीजल और ग्रिड बिजली पर निर्भरता कम होती है।",
+      "department": "Ministry of New and Renewable Energy (MNRE), Government of India",
+      "state_applicability": ["All India"],
+      "farmer_categories": ["all"],
+      "landholding_min_ha": 0,
+      "landholding_max_ha": null,
+      "crops": ["All"],
+      "eligibility": [
+        "Individual farmers, cooperatives, FPOs, panchayats and water user associations as per the applicable component",
+        "Availability of land and technical feasibility of the solar pump or solar plant",
+        "State-specific implementation guidelines and selection processes apply"
+      ],
+      "benefits": [
+        "Support for solar irrigation pumps and related solar systems",
+        "Reduced diesel and electricity costs over the system life",
+        "Grid-connected farmers may be able to sell surplus solar power under applicable state rules"
+      ],
+      "required_documents": [
+        "Identity and address proof",
+        "Land documents for the proposed site",
+        "Electricity connection details where applicable",
+        "Bank account details"
+      ],
+      "application_procedure": [
+        "Check your state's PM-KUSUM implementation agency and current application window",
+        "Apply through the designated state portal or agency as instructed",
+        "Complete technical and land feasibility verification",
+        "Pay the farmer share, if any, after selection and follow installation guidelines"
+      ],
+      "official_application_url": "https://pmkusum.mnre.gov.in/",
+      "source_url": "https://pmkusum.mnre.gov.in/",
+      "last_verified_date": "2025-06-30"
+    },
+    {
+      "id": "agri-infra-fund",
+      "name": "Agriculture Infrastructure Fund (AIF)",
+      "name_hi": "कृषि अवसंरचना कोष (एआईएफ)",
+      "description": "Financing facility for post-harvest and community farming infrastructure, with interest subvention and credit guarantee support.",
+      "description_hi": "फसल के बाद की और सामुदायिक कृषि अवसंरचना के लिए वित्तपोषण सुविधा, ब्याज सहायता और ऋण गारंटी सहायता के साथ।",
+      "department": "Ministry of Agriculture and Farmers Welfare, Government of India",
+      "state_applicability": ["All India"],
+      "farmer_categories": ["all"],
+      "landholding_min_ha": 0,
+      "landholding_max_ha": null,
+      "crops": ["All"],
+      "eligibility": [
+        "Farmers, FPOs, PACS, cooperatives, agri-entrepreneurs, startups and other eligible beneficiaries",
+        "Project must be a viable post-harvest or community farming asset as defined under the scheme",
+        "Loan appraisal and approval are done by the participating lending institution"
+      ],
+      "benefits": [
+        "Interest subvention on eligible loans as per scheme guidelines",
+        "Credit guarantee coverage for eligible borrowers",
+        "Support for storage, processing, logistics and community farming assets"
+      ],
+      "required_documents": [
+        "Project proposal and cost estimate",
+        "Identity and address proof",
+        "Land or site documents",
+        "Bank and financial statements as requested by the lender",
+        "Registration documents for FPOs, cooperatives or companies"
+      ],
+      "application_procedure": [
+        "Prepare a project proposal for the proposed agricultural infrastructure",
+        "Apply through the AIF portal and select a participating lending institution",
+        "Complete bank appraisal and submit required documents",
+        "After approval, follow the loan and asset-creation conditions"
+      ],
+      "official_application_url": "https://agriinfra.dac.gov.in/",
+      "source_url": "https://agriinfra.dac.gov.in/",
+      "last_verified_date": "2025-06-30"
+    },
+    {
+      "id": "midh",
+      "name": "Mission for Integrated Development of Horticulture (MIDH)",
+      "name_hi": "एकीकृत बागवानी विकास मिशन (एमआईडीएच)",
+      "description": "Supports horticulture development including nurseries, protected cultivation, post-harvest management and market linkages.",
+      "description_hi": "नर्सरी, संरक्षित खेती, फसल के बाद प्रबंधन और बाजार संपर्क सहित बागवानी विकास को सहायता।",
+      "department": "Ministry of Agriculture and Farmers Welfare, Government of India",
+      "state_applicability": ["All India"],
+      "farmer_categories": ["all"],
+      "landholding_min_ha": 0,
+      "landholding_max_ha": null,
+      "crops": ["Tomato", "Onion", "Potato", "Chilli", "Banana", "Sugarcane"],
+      "eligibility": [
+        "Farmers and farmer groups taking up eligible horticulture activities",
+        "State horticulture department norms and project approval apply",
+        "Some components may have specific area, unit-size or beneficiary conditions"
+      ],
+      "benefits": [
+        "Assistance for eligible horticulture inputs and infrastructure as per norms",
+        "Support for protected cultivation, nurseries and post-harvest units",
+        "Training and demonstration support through state agencies"
+      ],
+      "required_documents": [
+        "Identity and address proof",
+        "Land records",
+        "Project or component application as required by the state",
+        "Bank account details"
+      ],
+      "application_procedure": [
+        "Contact the district horticulture office to confirm current components and subsidy norms",
+        "Submit the prescribed application with land and project details",
+        "Complete technical verification and approval",
+        "Implement the approved activity and claim assistance as instructed"
+      ],
+      "official_application_url": "https://midh.gov.in/",
+      "source_url": "https://midh.gov.in/",
+      "last_verified_date": "2025-06-30"
+    },
+    {
+      "id": "pm-kmy",
+      "name": "Pradhan Mantri Kisan Maan Dhan Yojana (PM-KMY)",
+      "name_hi": "प्रधानमंत्री किसान मान धन योजना (पीएम-केएमवाई)",
+      "description": "Voluntary pension scheme for small and marginal farmers providing a monthly pension after age 60.",
+      "description_hi": "लघु और सीमांत किसानों के लिए स्वैच्छिक पेंशन योजना, जिसमें 60 वर्ष के बाद मासिक पेंशन मिलती है।",
+      "department": "Ministry of Agriculture and Farmers Welfare with Life Insurance Corporation of India",
+      "state_applicability": ["All India"],
+      "farmer_categories": ["small", "marginal"],
+      "landholding_min_ha": 0,
+      "landholding_max_ha": 2,
+      "crops": ["All"],
+      "eligibility": [
+        "Small and marginal farmers with cultivable land up to 2 hectares",
+        "Entry age between 18 and 40 years",
+        "Aadhaar, bank account and land records are required",
+        "Applicants should not be covered under another statutory pension scheme in the specified manner"
+      ],
+      "benefits": [
+        "Assured monthly pension of ₹3,000 after attaining age 60, subject to scheme conditions",
+        "Government co-contribution for eligible subscribers",
+        "Family pension benefit as per scheme rules"
+      ],
+      "required_documents": [
+        "Aadhaar card",
+        "Land records",
+        "Bank account details",
+        "Mobile number"
+      ],
+      "application_procedure": [
+        "Visit the nearest Common Service Centre or use the official PM-KMY enrolment channel",
+        "Complete Aadhaar and land-record verification",
+        "Choose the contribution option and submit the auto-debit mandate",
+        "Track contributions and enrolment status through the official portal"
+      ],
+      "official_application_url": "https://maandhan.in/",
+      "source_url": "https://maandhan.in/",
+      "last_verified_date": "2025-06-30"
+    },
+    {
+      "id": "pkvy",
+      "name": "Paramparagat Krishi Vikas Yojana (PKVY)",
+      "name_hi": "परंपरागत कृषि विकास योजना (पीकेवीवाई)",
+      "description": "Supports organic farming through farmer clusters, participatory guarantee certification and training.",
+      "description_hi": "किसान समूहों, सहभागी गारंटी प्रमाणन और प्रशिक्षण के माध्यम से जैविक खेती को सहायता।",
+      "department": "Ministry of Agriculture and Farmers Welfare, Government of India",
+      "state_applicability": ["All India"],
+      "farmer_categories": ["all"],
+      "landholding_min_ha": 0,
+      "landholding_max_ha": null,
+      "crops": ["All"],
+      "eligibility": [
+        "Farmer groups and clusters willing to adopt organic farming practices",
+        "Cluster size and state implementation conditions must be met",
+        "Participation in training and certification processes is required"
+      ],
+      "benefits": [
+        "Support for organic inputs, certification and cluster activities as per norms",
+        "Training and handholding for organic farming",
+        "Support for marketing and certification where applicable"
+      ],
+      "required_documents": [
+        "Identity and address proof",
+        "Land records",
+        "Farmer group or cluster details",
+        "Bank account details"
+      ],
+      "application_procedure": [
+        "Contact the district agriculture office or state organic farming cell",
+        "Form or join an eligible farmer cluster as per local guidelines",
+        "Submit the prescribed application and participate in training",
+        "Follow the organic package of practices and certification requirements"
+      ],
+      "official_application_url": "https://pgsindia-ncof.gov.in/",
+      "source_url": "https://pgsindia-ncof.gov.in/",
+      "last_verified_date": "2025-06-30"
+    }
+  ]
+}

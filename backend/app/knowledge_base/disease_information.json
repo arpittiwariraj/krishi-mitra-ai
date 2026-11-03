@@ -1,0 +1,316 @@
+{
+  "metadata": {
+    "description": "Curated crop disease reference used to ground AI visual observations. Treatment guidance is general and avoids product-specific dosage instructions.",
+    "last_curated": "2025-06-30",
+    "sources": [
+      "ICAR crop protection advisories",
+      "State agricultural university extension bulletins",
+      "KVK (Krishi Vigyan Kendra) crop advisories"
+    ]
+  },
+  "diseases": [
+    {
+      "id": "tomato_early_blight",
+      "crop_name": "Tomato",
+      "disease_name": "Early Blight",
+      "aliases": ["Alternaria blight", "Alternaria solani", "early leaf spot"],
+      "symptoms": [
+        "Dark brown concentric rings or target-like spots on older leaves",
+        "Yellowing around leaf spots",
+        "Spots may spread to stems and fruit",
+        "Lower leaves are usually affected first"
+      ],
+      "possible_causes": [
+        "Fungal pathogen Alternaria solani",
+        "Warm, humid conditions and extended leaf wetness",
+        "Poor air circulation and overhead irrigation",
+        "Infected crop debris remaining in the field"
+      ],
+      "prevention": [
+        "Use healthy seed and disease-free transplants",
+        "Rotate with non-solanaceous crops",
+        "Remove and destroy severely infected plant debris",
+        "Water at the base and avoid prolonged leaf wetness",
+        "Maintain spacing for better airflow"
+      ],
+      "treatment_guidance": [
+        "Remove badly infected lower leaves and dispose of them away from the field",
+        "Consult your local KVK or extension officer for a locally registered fungicide and follow the product label exactly",
+        "Avoid spraying during windy conditions or close to harvest; observe the label waiting period"
+      ],
+      "reference_source": "ICAR and state agricultural university extension guidance on Alternaria leaf blight",
+      "last_verified": "2025-06-30"
+    },
+    {
+      "id": "tomato_late_blight",
+      "crop_name": "Tomato",
+      "disease_name": "Late Blight",
+      "aliases": ["Phytophthora infestans", "late blight of tomato"],
+      "symptoms": [
+        "Large irregular water-soaked grey-green patches on leaves",
+        "White fuzzy growth on the underside of leaves in humid weather",
+        "Brown lesions on stems",
+        "Fruit develops firm brown patches"
+      ],
+      "possible_causes": [
+        "Oomycete pathogen Phytophthora infestans",
+        "Cool, wet weather with high humidity",
+        "Spread by wind-driven rain and infected plant material"
+      ],
+      "prevention": [
+        "Use certified disease-free planting material",
+        "Avoid dense planting and improve field ventilation",
+        "Remove infected plants immediately",
+        "Do not compost infected plant material"
+      ],
+      "treatment_guidance": [
+        "Act quickly because late blight can spread rapidly",
+        "Remove and destroy infected plants",
+        "Contact the local agriculture department or KVK for a recommended locally approved control programme",
+        "Follow local resistance-management guidance and product labels"
+      ],
+      "reference_source": "ICAR and state agricultural university extension guidance on Phytophthora blight",
+      "last_verified": "2025-06-30"
+    },
+    {
+      "id": "potato_late_blight",
+      "crop_name": "Potato",
+      "disease_name": "Late Blight",
+      "aliases": ["Phytophthora infestans", "potato blight"],
+      "symptoms": [
+        "Water-soaked dark lesions on leaves",
+        "White fungal-like growth on leaf undersides in wet conditions",
+        "Rapid collapse of foliage",
+        "Brown rot on tubers"
+      ],
+      "possible_causes": [
+        "Phytophthora infestans",
+        "Cool, humid weather and prolonged leaf wetness",
+        "Infected seed tubers and volunteer plants"
+      ],
+      "prevention": [
+        "Plant certified seed potatoes",
+        "Avoid overhead irrigation late in the day",
+        "Destroy cull piles and volunteer plants",
+        "Maintain adequate spacing for airflow"
+      ],
+      "treatment_guidance": [
+        "Remove infected foliage and isolate affected areas",
+        "Seek immediate guidance from the local agriculture office or KVK because the disease spreads quickly",
+        "Use only locally registered products and follow label directions"
+      ],
+      "reference_source": "ICAR and state agricultural university extension guidance on potato late blight",
+      "last_verified": "2025-06-30"
+    },
+    {
+      "id": "wheat_yellow_rust",
+      "crop_name": "Wheat",
+      "disease_name": "Yellow Rust",
+      "aliases": ["stripe rust", "Puccinia striiformis"],
+      "symptoms": [
+        "Yellow to orange powdery pustules in stripes on leaves",
+        "Pustules arranged in rows along leaf veins",
+        "Yellowing and premature drying of leaves",
+        "Severe infection reduces grain filling"
+      ],
+      "possible_causes": [
+        "Fungal pathogen Puccinia striiformis",
+        "Cool temperatures with moisture and dew",
+        "Wind-borne spores and susceptible wheat varieties"
+      ],
+      "prevention": [
+        "Grow recommended rust-resistant wheat varieties",
+        "Avoid excessive nitrogen application",
+        "Sow at the recommended time for your district",
+        "Monitor crops closely during cool, humid weather"
+      ],
+      "treatment_guidance": [
+        "Report unusual rust outbreaks to the local agriculture department",
+        "Consult the district agriculture officer or KVK for the current recommended fungicide schedule",
+        "Follow product labels and local resistance-management advice"
+      ],
+      "reference_source": "ICAR wheat crop protection advisory",
+      "last_verified": "2025-06-30"
+    },
+    {
+      "id": "rice_blast",
+      "crop_name": "Rice",
+      "disease_name": "Blast",
+      "aliases": ["rice blast", "Magnaporthe oryzae", "leaf blast"],
+      "symptoms": [
+        "Spindle-shaped or diamond-shaped lesions on leaves",
+        "Grey centres with brown margins",
+        "Lesions may join and kill leaf tissue",
+        "Neck blast can cause panicle breakage"
+      ],
+      "possible_causes": [
+        "Fungal pathogen Magnaporthe oryzae",
+        "High humidity, dew and moderately warm temperatures",
+        "Excess nitrogen and dense crop canopy"
+      ],
+      "prevention": [
+        "Use recommended resistant varieties where available",
+        "Apply nitrogen in split doses as per soil test",
+        "Maintain balanced plant nutrition",
+        "Avoid continuous standing water where not recommended"
+      ],
+      "treatment_guidance": [
+        "Consult the local agriculture office or KVK for a district-specific management plan",
+        "Use only registered fungicides and follow the label and waiting period",
+        "Keep a field record of symptoms and weather conditions"
+      ],
+      "reference_source": "ICAR and state rice research station advisory",
+      "last_verified": "2025-06-30"
+    },
+    {
+      "id": "cotton_leaf_curl",
+      "crop_name": "Cotton",
+      "disease_name": "Cotton Leaf Curl Virus",
+      "aliases": ["CLCuV", "leaf curl", "cotton leaf curl disease"],
+      "symptoms": [
+        "Upward or downward curling of leaves",
+        "Thickened, darkened veins",
+        "Small leaf-like enations on leaf undersides",
+        "Stunted growth and reduced boll formation"
+      ],
+      "possible_causes": [
+        "Cotton leaf curl virus",
+        "Transmission by whitefly",
+        "Susceptible varieties and whitefly pressure"
+      ],
+      "prevention": [
+        "Use recommended virus-resistant or tolerant varieties",
+        "Monitor and manage whitefly populations as per local guidance",
+        "Remove infected volunteer plants",
+        "Avoid late sowing where whitefly pressure is high"
+      ],
+      "treatment_guidance": [
+        "There is no direct cure for the virus; focus on vector management and removing severely infected plants",
+        "Contact the local KVK for integrated whitefly management guidance",
+        "Use only approved insecticides when thresholds require it and follow label instructions"
+      ],
+      "reference_source": "ICAR-CICR cotton protection advisory",
+      "last_verified": "2025-06-30"
+    },
+    {
+      "id": "maize_fall_armyworm",
+      "crop_name": "Maize",
+      "disease_name": "Fall Armyworm damage",
+      "aliases": ["Spodoptera frugiperda", "FAW", "armyworm"],
+      "symptoms": [
+        "Ragged holes in leaves",
+        "Moist sawdust-like frass in the whorl",
+        "Larvae with an inverted Y on the head",
+        "Damage concentrated in the growing point"
+      ],
+      "possible_causes": [
+        "Fall armyworm larvae feeding on leaves and whorls",
+        "Continuous maize cultivation and warm weather",
+        "Wind-assisted moth migration"
+      ],
+      "prevention": [
+        "Scout fields regularly, especially the whorl",
+        "Encourage natural enemies and follow integrated pest management",
+        "Avoid staggered maize planting that provides continuous food",
+        "Follow district pest surveillance alerts"
+      ],
+      "treatment_guidance": [
+        "Hand-pick larvae where practical in small plots",
+        "Consult the local KVK for threshold-based integrated pest management",
+        "If a registered insecticide is advised, follow the label rate, safety precautions and waiting period"
+      ],
+      "reference_source": "ICAR and state maize pest surveillance advisory",
+      "last_verified": "2025-06-30"
+    },
+    {
+      "id": "chilli_anthracnose",
+      "crop_name": "Chilli",
+      "disease_name": "Anthracnose",
+      "aliases": ["fruit rot", "Colletotrichum", "chilli anthracnose"],
+      "symptoms": [
+        "Sunken circular lesions on fruit",
+        "Dark spots with concentric rings on fruit and leaves",
+        "Fruit rot and premature fruit drop",
+        "Lesions may develop during humid weather"
+      ],
+      "possible_causes": [
+        "Colletotrichum fungal species",
+        "High humidity and rain during fruiting",
+        "Infected seed and crop debris"
+      ],
+      "prevention": [
+        "Use certified disease-free seed",
+        "Rotate crops and remove infected debris",
+        "Avoid overhead irrigation during fruiting",
+        "Provide good drainage and plant spacing"
+      ],
+      "treatment_guidance": [
+        "Remove infected fruit from the field",
+        "Consult the local KVK or extension officer for an approved fungicide schedule",
+        "Follow the product label and pre-harvest interval"
+      ],
+      "reference_source": "ICAR and state horticulture extension guidance",
+      "last_verified": "2025-06-30"
+    },
+    {
+      "id": "onion_purple_blotch",
+      "crop_name": "Onion",
+      "disease_name": "Purple Blotch",
+      "aliases": ["Alternaria porri", "onion leaf blotch"],
+      "symptoms": [
+        "Small white sunken spots that enlarge into purple lesions",
+        "Brown-purple patches on leaves and seed stalks",
+        "Leaf tips dry and die back",
+        "Severe infection reduces bulb size"
+      ],
+      "possible_causes": [
+        "Fungal pathogen Alternaria porri",
+        "Prolonged leaf wetness and humid weather",
+        "Dense planting and crop debris"
+      ],
+      "prevention": [
+        "Use healthy sets or seed",
+        "Rotate with non-allium crops",
+        "Avoid overhead irrigation and improve airflow",
+        "Remove crop debris after harvest"
+      ],
+      "treatment_guidance": [
+        "Remove badly affected leaves and maintain field sanitation",
+        "Consult the local horticulture office or KVK for registered control options",
+        "Follow product label directions and the waiting period"
+      ],
+      "reference_source": "ICAR and state horticulture extension guidance",
+      "last_verified": "2025-06-30"
+    },
+    {
+      "id": "sugarcane_red_rot",
+      "crop_name": "Sugarcane",
+      "disease_name": "Red Rot",
+      "aliases": ["Colletotrichum falcatum", "sugarcane red rot"],
+      "symptoms": [
+        "Yellowing and drying of upper leaves",
+        "Reddish discolouration inside split cane",
+        "Alcoholic or sour smell from affected cane",
+        "Hollow, discoloured internodes"
+      ],
+      "possible_causes": [
+        "Fungal pathogen Colletotrichum falcatum",
+        "Infected seed cane and soil",
+        "Waterlogging and susceptible varieties"
+      ],
+      "prevention": [
+        "Use disease-free seed cane from a certified source",
+        "Follow crop rotation and remove infected stools",
+        "Improve drainage in fields",
+        "Avoid planting susceptible varieties repeatedly"
+      ],
+      "treatment_guidance": [
+        "Uproot and destroy severely infected clumps",
+        "Avoid using seed cane from affected fields",
+        "Consult the local sugarcane research station or KVK for variety and management advice"
+      ],
+      "reference_source": "ICAR-IISR sugarcane protection advisory",
+      "last_verified": "2025-06-30"
+    }
+  ]
+}

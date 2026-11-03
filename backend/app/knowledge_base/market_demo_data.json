@@ -1,0 +1,22 @@
+{
+  "notice": "DEMONSTRATION DATA ONLY - these are illustrative records, not live mandi prices. Set MARKET_DEMO_MODE=true only for offline demos; the API labels every record as demonstration data.",
+  "records": [
+    {"state": "Maharashtra", "district": "Pune", "market": "Pune Market Yard", "commodity": "Tomato", "variety": "Local", "arrival_date": "02/11/2026", "min_price": 1100, "max_price": 1650, "modal_price": 1400, "arrival_quantity": 820, "latitude": 18.5204, "longitude": 73.8567},
+    {"state": "Maharashtra", "district": "Nashik", "market": "Nashik APMC", "commodity": "Tomato", "variety": "Local", "arrival_date": "02/11/2026", "min_price": 1200, "max_price": 1800, "modal_price": 1530, "arrival_quantity": 1250, "latitude": 19.9975, "longitude": 73.7898},
+    {"state": "Maharashtra", "district": "Ahmednagar", "market": "Ahmednagar APMC", "commodity": "Tomato", "variety": "Local", "arrival_date": "02/11/2026", "min_price": 1000, "max_price": 1500, "modal_price": 1280, "arrival_quantity": 640, "latitude": 19.0948, "longitude": 74.7480},
+    {"state": "Maharashtra", "district": "Satara", "market": "Satara APMC", "commodity": "Tomato", "variety": "Local", "arrival_date": "02/11/2026", "min_price": 950, "max_price": 1550, "modal_price": 1320, "arrival_quantity": 410, "latitude": 17.6805, "longitude": 74.0183},
+    {"state": "Maharashtra", "district": "Solapur", "market": "Solapur APMC", "commodity": "Tomato", "variety": "Local", "arrival_date": "02/11/2026", "min_price": 900, "max_price": 1450, "modal_price": 1210, "arrival_quantity": 530, "latitude": 17.6599, "longitude": 75.9064},
+
+    {"state": "Maharashtra", "district": "Pune", "market": "Pune Market Yard", "commodity": "Onion", "variety": "Local", "arrival_date": "02/11/2026", "min_price": 1400, "max_price": 2200, "modal_price": 1850, "arrival_quantity": 930, "latitude": 18.5204, "longitude": 73.8567},
+    {"state": "Maharashtra", "district": "Nashik", "market": "Lasalgaon APMC", "commodity": "Onion", "variety": "Local", "arrival_date": "02/11/2026", "min_price": 1500, "max_price": 2400, "modal_price": 2010, "arrival_quantity": 2100, "latitude": 20.1430, "longitude": 74.2230},
+    {"state": "Maharashtra", "district": "Ahmednagar", "market": "Ahmednagar APMC", "commodity": "Onion", "variety": "Local", "arrival_date": "02/11/2026", "min_price": 1300, "max_price": 2100, "modal_price": 1720, "arrival_quantity": 760, "latitude": 19.0948, "longitude": 74.7480},
+    {"state": "Maharashtra", "district": "Solapur", "market": "Solapur APMC", "commodity": "Onion", "variety": "Local", "arrival_date": "02/11/2026", "min_price": 1200, "max_price": 1950, "modal_price": 1680, "arrival_quantity": 500, "latitude": 17.6599, "longitude": 75.9064},
+
+    {"state": "Punjab", "district": "Ludhiana", "market": "Ludhiana Mandi", "commodity": "Wheat", "variety": "Dara", "arrival_date": "02/11/2026", "min_price": 2275, "max_price": 2400, "modal_price": 2340, "arrival_quantity": 1500, "latitude": 30.9010, "longitude": 75.8573},
+    {"state": "Punjab", "district": "Patiala", "market": "Patiala Mandi", "commodity": "Wheat", "variety": "Dara", "arrival_date": "02/11/2026", "min_price": 2250, "max_price": 2395, "modal_price": 2310, "arrival_quantity": 980, "latitude": 30.3398, "longitude": 76.3869},
+    {"state": "Punjab", "district": "Jalandhar", "market": "Jalandhar Mandi", "commodity": "Wheat", "variety": "Dara", "arrival_date": "02/11/2026", "min_price": 2260, "max_price": 2380, "modal_price": 2335, "arrival_quantity": 700, "latitude": 31.3260, "longitude": 75.5762},
+
+    {"state": "Karnataka", "district": "Bengaluru Rural", "market": "Binny Mill APMC", "commodity": "Tomato", "variety": "Local", "arrival_date": "02/11/2026", "min_price": 1050, "max_price": 1700, "modal_price": 1450, "arrival_quantity": 600, "latitude": 12.9716, "longitude": 77.5946},
+    {"state": "Karnataka", "district": "Kolar", "market": "Kolar APMC", "commodity": "Tomato", "variety": "Local", "arrival_date": "02/11/2026", "min_price": 900, "max_price": 1600, "modal_price": 1340, "arrival_quantity": 890, "latitude": 13.1357, "longitude": 78.1326}
+  ]
+}
