@@ -23,6 +23,16 @@ os.environ.setdefault("DATABASE_URL", "postgresql+psycopg://postgres@127.0.0.1:5
 os.environ.setdefault("JWT_SECRET_KEY", "test-jwt-secret")
 os.environ.setdefault("JWT_ALGORITHM", "HS256")
 os.environ.setdefault("FRONTEND_URL", "http://localhost:5173")
+
+# Test isolation: force clean AI, weather & market credentials (no real keys).
+os.environ.setdefault("OPENAI_API_KEY", "")
+os.environ.setdefault("OPENROUTER_API_KEY", "")
+os.environ.setdefault("OPENWEATHER_API_KEY", "")
+os.environ.setdefault("DATA_GOV_IN_API_KEY", "")
+os.environ.setdefault("OPENROUTER_BASE_URL", "https://openrouter.ai/api/v1")
+os.environ.setdefault("OPENROUTER_MODEL", "openai/gpt-4o-mini")
+os.environ.setdefault("OPENROUTER_HTTP_REFERER", "https://krishimitra.example")
+os.environ.setdefault("OPENROUTER_TITLE", "Krishi Mitra AI")
 # Explicitly disable demo mode so the test DB behaves deterministically even
 # if the project-local .env enables it.
 os.environ["MARKET_DEMO_MODE"] = "false"

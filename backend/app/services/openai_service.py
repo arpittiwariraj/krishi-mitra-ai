@@ -31,14 +31,28 @@ _client: AsyncOpenAI | None = None
 
 def _get_client() -> AsyncOpenAI:
     global _client
-    if not settings.openai_configured:
+    # AI is not configured at all -> clear configuration error (503).
+    if not settings.openai_configured and not settings.openrouter_configured:
         raise AIServiceError(
-            "AI image analysis is not configured. Add OPENAI_API_KEY to backend/.env.",
+            "AI image analysis is not configured. Add OPENAI_API_KEY or OPENROUTER_API_KEY to backend/.env.",
             "AI_NOT_CONFIGURED",
             503,
         )
     if _client is None:
-        _client = AsyncOpenAI(api_key=settings.openai_api_key, timeout=60.0)
+        openrouter = settings.openrouter_configured
+        _client = AsyncOpenAI(
+            api_key=settings.openrouter_api_key or settings.openai_api_key,
+            base_url=settings.openrouter_base_url if openrouter else None,
+            timeout=60.0,
+            default_headers=(
+                {
+                    "HTTP-Referer": settings.openrouter_http_referer,
+                    "X-Title": settings.openrouter_title,
+                }
+                if openrouter
+                else {}
+            ),
+        )
     return _client
 
 

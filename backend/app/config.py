@@ -27,6 +27,14 @@ class Settings(BaseSettings):
     openai_api_key: str = ""
     openai_model: str = "gpt-4o-mini"
 
+    # OpenRouter (unified multi-provider router) — used instead of direct
+    # api.openai.com when an OpenRouter API key is supplied.
+    openrouter_base_url: str = "https://openrouter.ai/api/v1"
+    openrouter_api_key: str = ""
+    openrouter_model: str = "openai/gpt-4o-mini"
+    openrouter_http_referer: str = "https://krishimitra.example"
+    openrouter_title: str = "Krishi Mitra AI"
+
     openweather_api_key: str = ""
 
     data_gov_in_api_key: str = ""
@@ -51,6 +59,10 @@ class Settings(BaseSettings):
     @property
     def openai_configured(self) -> bool:
         return bool(self.openai_api_key.strip())
+
+    @property
+    def openrouter_configured(self) -> bool:
+        return bool(self.openrouter_api_key.strip())
 
     @property
     def openweather_configured(self) -> bool:

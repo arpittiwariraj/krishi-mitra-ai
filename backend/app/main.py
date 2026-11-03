@@ -121,13 +121,16 @@ def health():
             "backend": "running",
             "database": {"connected": db_ok, "status": db_status},
             "services": {
-                "openai": {
-                    "configured": settings.openai_configured,
-                    "model": settings.openai_model if settings.openai_configured else None,
+                "ai": {
+                    "configured": settings.openai_configured or settings.openrouter_configured,
+                    "method": "OpenRouter" if settings.openrouter_configured else ("OpenAI" if settings.openai_configured else "not configured"),
+                    "model": settings.openrouter_model if settings.openrouter_configured else (settings.openai_model if settings.openai_configured else None),
+                    "openai_api_key_configured": settings.openai_configured,
+                    "openrouter_configured": settings.openrouter_configured,
                 },
                 "openweather": {"configured": settings.openweather_configured},
-                "data_gov_in": {
-                    "configured": settings.data_gov_configured,
+                "market": {
+                    "data_gov_in": {"configured": settings.data_gov_configured},
                     "demo_mode": settings.market_demo_mode,
                 },
             },

@@ -14,9 +14,13 @@ class TestHealth:
         data = resp.json()["data"]
         assert data["database"]["connected"] is True  # test DB is live
         services = data["services"]
-        assert services["openai"]["configured"] is False  # no key configured in test env
+        # Test env carries no AI keys: AI service is "not configured".
+        assert services["ai"]["configured"] is False
+        assert services["ai"]["method"] == "not configured"
+        assert services["ai"]["openai_api_key_configured"] is False
+        assert services["ai"]["openrouter_configured"] is False
         assert services["openweather"]["configured"] is False
-        assert services["data_gov_in"]["configured"] is False
+        assert services["market"]["data_gov_in"]["configured"] is False
 
 
 class TestAuth:
